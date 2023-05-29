@@ -1,0 +1,36 @@
+@import url('https://fonts.cdnfonts.com/css/gotham');
+
+body {
+    font-family: Gotham, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            opacity: 0.7;
+            border-bottom: 2px solid #0066cc;
+        }
+    }
+}
+
+.modal {
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    border: 2px solid red;
+    display: none;
+}
+
+.modal.active {
+    display: block;
+}

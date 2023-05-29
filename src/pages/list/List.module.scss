@@ -1,0 +1,106 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .filterContainer {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+      
+      .display {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+
+        th,
+        td {
+          padding: 8px;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+          background-color: #f7f7f7;
+          font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+          background-color: #e6e6e6;
+        }
+      }
+
+      .tableFooter {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        .showing {
+          text-align: left;
+        }
+      
+        .pagination {
+          display: flex;
+          
+
+          .currentPage {
+            background-color: #00a6ed;
+            color: white;
+            padding: 5px;
+            margin: 0 5px;
+            border-radius: 4px;
+            width: 40px;
+            text-align: center;
+          }
+      
+          button {
+            background-color: #00a6ed;
+            color: inherit;
+            border-radius: 4px;
+            border: 1px solid #00a6ed;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            margin: 0 5px;
+            width: 40px;
+
+            &.disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      a {
+        display: block;
+        text-align: center;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+  }
