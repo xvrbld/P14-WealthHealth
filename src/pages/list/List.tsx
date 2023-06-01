@@ -60,24 +60,20 @@ function List() {
         accessor: "department",
       },
       {
-        Header: "Date of Birth",
-        accessor: "dateOfBirth",
-      },
-      {
         Header: "Street",
-        accessor: (row) => row.address?.street,
+        accessor: (row) => row.address.street,
       },
       {
         Header: "City",
-        accessor: (row) => row.address?.city,
+        accessor: (row) => row.address.city,
       },
       {
         Header: "State",
-        accessor: (row) => row.address?.state,
+        accessor: (row) => row.address.state,
       },
       {
         Header: "Zip Code",
-        accessor: (row) => row.address?.zipCode,
+        accessor: (row) => row.address.zipCode,
       },
     ],
     []
@@ -89,12 +85,23 @@ function List() {
   const indexOfLastRow = currentPage * entriesPerPage;
   const indexOfFirstRow = indexOfLastRow - entriesPerPage;
 
-  const filteredRows = rows.filter((row) =>
-    Object.values(row.original)
-      .join(" ")
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase())
-  );
+  const filteredRows = rows.filter((row) => {
+    const { firstName, lastName, department, dateOfBirth, address } = row.original;
+    const searchTerms = [
+      firstName,
+      lastName,
+      department,
+      dateOfBirth,
+      address?.street,
+      address?.city,
+      address?.state,
+      address?.zipCode,
+    ];
+  
+    return searchTerms
+      .filter((term) => term) // Filter out undefined/null values
+      .some((term) => term.toLowerCase().includes(searchQuery.toLowerCase()));
+  });
   const currentRows = filteredRows.slice(indexOfFirstRow, indexOfLastRow);
 
   const handleEntriesPerPageChange = (
