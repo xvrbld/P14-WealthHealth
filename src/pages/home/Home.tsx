@@ -5,8 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
 import statesData from "data/States.json";
-import { MyModal } from "oc-modal-library";
-
+import { MyModal } from "xavier-modal-library";
 interface EmployeeData {
   firstName: string;
   lastName: string;
@@ -49,25 +48,25 @@ function Home() {
       },
       department: selectedDepartment,
     };
-  
+
     // Retrieve existing employee data from local storage
     const storedData = localStorage.getItem("employeeData");
     let existingData: EmployeeData[] = [];
     if (storedData) {
       existingData = JSON.parse(storedData);
     }
-  
+
     // Make sure existingData is an array
     if (!Array.isArray(existingData)) {
       existingData = [];
     }
-  
+
     // Add the new employee to the existing data
     const updatedData = [...existingData, employee];
-  
+
     // Save updated employee data to local storage
     localStorage.setItem("employeeData", JSON.stringify(updatedData));
-  
+
     setShowConfirmation(true); // Show confirmation text
   }
 
@@ -181,7 +180,7 @@ function Home() {
           />
         </form>
 
-        <button onClick={saveEmployee}>Save</button>
+        <button className={styles.saveEmployee} onClick={saveEmployee}>Save</button>
 
         {showConfirmation && (
           <div id="confirmation" className={styles.modal}>
@@ -189,7 +188,21 @@ function Home() {
           </div>
         )}
       </div>
-      <MyModal open={showConfirmation} title='Test' />
+      <MyModal
+        open={showConfirmation}
+        text="Employee created!"
+        onClose={() => setShowConfirmation(false)}
+        onOpen={() => ""}
+        onConfirm={() => ""}
+        closeOnOverlayClick={true}
+        closeOnEscape={true}
+        customClass="custom-modal"
+        showCloseButton={true}
+        showFooter={true}
+        footerContent={null}
+        disableCloseButton={false}
+        disableOverlayClick={false}
+      />
     </div>
   );
 }
