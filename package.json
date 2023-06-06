@@ -20,7 +20,7 @@
     "sass": "^1.62.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
-    "xavier-modal-library": "^1.0.0"
+    "xavier-modal-library": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
